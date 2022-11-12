@@ -1,0 +1,77 @@
+using System;
+using LibaryForFormsCalc;
+
+namespace calc
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Calc c = new Calc();
+
+            double dA, dB;
+            string sign;
+
+            c.getSign = "";
+            sign = c.getSign;
+
+            while (true)
+            {
+                Console.Write("Введите первое число: ");
+
+                try
+                {
+                    c.A = Convert.ToDouble(Console.ReadLine());
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error");
+                }
+            }
+
+            while (true)
+            {
+                while (true)
+                {
+                    Console.Write("Введите действие: ");
+                    c.getSign = Console.ReadLine();
+
+                    if (c.getSign == "+" ||
+                       c.getSign == "-" ||
+                       c.getSign == "*" ||
+                       c.getSign == "/" ||
+                       c.getSign == "=")
+                    {
+                        break;
+                    }
+                }
+
+                if (c.getSign != "=")
+                {
+                    while (true)
+                    {
+                        Console.Write("Введите следующее число: ");
+                        try
+                        {
+                            c.B = Convert.ToDouble(Console.ReadLine());
+                            break;
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Error");
+                        }
+                    }
+                    c.Action();
+                    c.A = c.dA;
+                    Console.WriteLine(c.dA);
+                }
+                else
+                {
+                    Console.WriteLine(c.dA);
+                    break;
+                }
+            }
+        }
+    }
+}
